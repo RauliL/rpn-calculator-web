@@ -197,7 +197,7 @@ Calculator.prototype.eval = function (line) {
       var value = parseFloat(word);
 
       if (isNaN(value)) {
-        throw "Unable to parse '" + word + "' into number";
+        throw "unable to parse '" + word + "' into number";
       }
       this.stack.push(value);
       continue;
@@ -205,10 +205,10 @@ Calculator.prototype.eval = function (line) {
 
     operation = this.operations[word];
     if (!operation) {
-      throw "Unrecognized operation: '" + word + "'";
+      throw "unrecognized operation: '" + word + "'";
     }
     else if (this.stack.length < operation.arity) {
-      throw "Stack underflow";
+      throw "stack underflow";
     }
 
     result = operation.callback.apply(
