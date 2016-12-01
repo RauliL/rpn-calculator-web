@@ -1,0 +1,19 @@
+{
+  "name": "rpn-calculator-web",
+  "version": "0.1.0",
+  "description": "RPN calculator that runs on browser.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack -d --watch"
+  },
+  "author": "Rauli Laine <rauli.laine@iki.fi> (https://raulil.github.io/)",
+  "license": "MIT",
+  "dependencies": {
+    "css-loader": "^0.26.0",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.3"
+  }
+}
