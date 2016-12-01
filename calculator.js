@@ -194,7 +194,12 @@ Calculator.prototype.eval = function (line) {
     var result;
 
     if (/^(\+|-)?[0-9]+(\.[0-9]+)?$/.test(word)) {
-      this.stack.push(parseFloat(word)); // TODO: NaN handling.
+      var value = parseFloat(word);
+
+      if (isNaN(value)) {
+        throw "Unable to parse '" + word + "' into number";
+      }
+      this.stack.push(value);
       continue;
     }
 
