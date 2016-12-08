@@ -125,6 +125,14 @@ Calculator.prototype.operations = {
     arity: 1,
     callback: Math.round
   },
+  "floor": {
+    arity: 1,
+    callback: Math.floor
+  },
+  "ceil": {
+    arity: 1,
+    callback: Math.ceil
+  },
 
   // Stack manipulation operations.
   "dup": {
