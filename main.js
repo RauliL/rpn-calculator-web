@@ -1,30 +1,31 @@
 require("./style.less");
 
 (function () {
+  var p = require("pakertaja");
   var calculator = new (require("./calculator.js"))();
-  var buffer = document.getElementById("ui-buffer");
-  var input = document.getElementById("ui-input");
-  var stack = document.getElementById("ui-stack");
+  var buffer = p.ul({id: "ui-buffer"});
+  var input = p.input({id: "ui-input"});
+  var stack = p.ul({id: "ui-stack"});
+
+  document.body.appendChild(p.div({id: "container-left"}, input, buffer));
+  document.body.appendChild(p.div({id: "container-right"}, stack));
 
   input.focus();
 
   function println(line, className) {
-    var li = document.createElement("li");
-
-    li.textContent = line;
-    if (className) {
-      li.setAttribute("class", className);
-    }
-    buffer.insertBefore(li, buffer.firstChild);
+    buffer.insertBefore(
+      p.li({
+        text: line,
+        "class": (className || "")
+      }),
+      buffer.firstChild
+    );
   }
 
   function updateStack() {
     stack.innerHTML = "";
     for (var i = 0; i < calculator.stack.length; ++i) {
-      var li = document.createElement("li");
-
-      li.textContent = String(calculator.stack[i]);
-      stack.insertBefore(li, stack.firstChild);
+      stack.insertBefore(p.li({text: calculator.stack[i]}), stack.firstChild);
     }
   }
 
