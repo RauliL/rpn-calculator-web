@@ -24,9 +24,28 @@ require("./style.less");
 
   function updateStack() {
     stack.innerHTML = "";
-    for (var i = 0; i < calculator.stack.length; ++i) {
-      stack.insertBefore(p.li({text: calculator.stack[i]}), stack.firstChild);
-    }
+    calculator.stack.forEach(function (value, index) {
+      stack.insertBefore(
+        p.li({
+          text: value,
+          onclick: function (ev) {
+            var newValue = window.prompt("Input new stack value:", value);
+
+            ev.preventDefault();
+            if (newValue) {
+              var newNumericValue = parseFloat(newValue);
+
+              if (!isNaN(newNumericValue)) {
+                calculator.stack[index] = newNumericValue;
+                updateStack();
+                input.focus();
+              }
+            }
+          }
+        }),
+        stack.firstChild
+      );
+    });
   }
 
   input.addEventListener("keydown", function (ev) {
