@@ -12,6 +12,13 @@ require("./style.less");
 
   input.focus();
 
+  calculator.operations["."] = calculator.operations["print"] = {
+    arity: 1,
+    callback: function (value) {
+      println(value.toString());
+    }
+  };
+
   function println(line, className) {
     buffer.insertBefore(
       p.li({
